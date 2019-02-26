@@ -461,6 +461,7 @@
 			this.Controls.Add(this.trackBar2);
 			this.Controls.Add(this.trackBar1);
 			this.Controls.Add(this.menuStrip1);
+			this.KeyPreview = true;
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "Form1";
 			this.Text = "Калькулятор";

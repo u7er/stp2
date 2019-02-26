@@ -13,7 +13,7 @@ namespace Converter {
 				throw new IndexOutOfRangeException();
 			if (number == zero)
 				number = Conver_10_p.int_to_Char(n).ToString();
-			else if ((number[number.Length - 1] != '0') || number.Contains(delim))
+			else
 				number += Conver_10_p.int_to_Char(n);
 			return Number;
 		}
@@ -105,7 +105,7 @@ namespace Converter {
 				break;
 				case 18:
 				Clear();
-				break; 
+				break;
 				default:
 				throw new IndexOutOfRangeException();
 			}

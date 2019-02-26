@@ -102,6 +102,8 @@ namespace Converter {
 
 		private void Form1_KeyPress(object sender, KeyPressEventArgs e) {
 			int i = -1;
+			if (label1.Text.Length > 30)
+				return;
 			if (e.KeyChar >= 'A' && e.KeyChar <= 'F')
 				i =	e.KeyChar - 'A' + 10;
 			if (e.KeyChar >= 'a' && e.KeyChar <= 'f')
@@ -130,6 +132,8 @@ namespace Converter {
 		private void button_Click(object sender, EventArgs e) {
 			Button but = (Button)sender;
 			int j = Convert.ToInt16(but.Tag.ToString());
+			if ((j >= 0 && j <= 15) && label1.Text.Length > 30)
+				return;
 			DoCmnd(j);
 		}
 	}
