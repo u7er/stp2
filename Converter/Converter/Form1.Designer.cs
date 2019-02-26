@@ -461,8 +461,11 @@
 			this.Controls.Add(this.trackBar2);
 			this.Controls.Add(this.trackBar1);
 			this.Controls.Add(this.menuStrip1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
 			this.KeyPreview = true;
 			this.MainMenuStrip = this.menuStrip1;
+			this.MaximizeBox = false;
+			this.MinimizeBox = false;
 			this.Name = "Form1";
 			this.Text = "Калькулятор";
 			this.Load += new System.EventHandler(this.Form1_Load);

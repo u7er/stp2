@@ -107,7 +107,7 @@ namespace Converter {
 				Clear();
 				break;
 				default:
-				throw new IndexOutOfRangeException();
+				return number;
 			}
 			return number;
 		}
