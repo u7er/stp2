@@ -23,45 +23,78 @@
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.PIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NumberIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.POut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Result = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// textBox1
+			// dataGridView1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(13, 13);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(549, 322);
-			this.textBox1.TabIndex = 0;
+			this.dataGridView1.AllowUserToAddRows = false;
+			this.dataGridView1.AllowUserToDeleteRows = false;
+			this.dataGridView1.AllowUserToResizeColumns = false;
+			this.dataGridView1.AllowUserToResizeRows = false;
+			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PIn,
+            this.NumberIn,
+            this.POut,
+            this.Result});
+			this.dataGridView1.Location = new System.Drawing.Point(13, 13);
+			this.dataGridView1.Name = "dataGridView1";
+			this.dataGridView1.Size = new System.Drawing.Size(823, 322);
+			this.dataGridView1.TabIndex = 2;
 			// 
-			// button1
+			// PIn
 			// 
-			this.button1.Location = new System.Drawing.Point(486, 341);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 1;
-			this.button1.Text = "Закрыть";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.PIn.HeaderText = "Начальное основание";
+			this.PIn.Name = "PIn";
+			this.PIn.ReadOnly = true;
+			this.PIn.Width = 132;
+			// 
+			// NumberIn
+			// 
+			this.NumberIn.HeaderText = "Начальное число";
+			this.NumberIn.Name = "NumberIn";
+			this.NumberIn.ReadOnly = true;
+			this.NumberIn.Width = 109;
+			// 
+			// POut
+			// 
+			this.POut.HeaderText = "Конечное основание";
+			this.POut.Name = "POut";
+			this.POut.ReadOnly = true;
+			this.POut.Width = 125;
+			// 
+			// Result
+			// 
+			this.Result.HeaderText = "Результат";
+			this.Result.Name = "Result";
+			this.Result.ReadOnly = true;
+			this.Result.Width = 84;
 			// 
 			// Form2
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(573, 374);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.textBox1);
+			this.ClientSize = new System.Drawing.Size(848, 345);
+			this.Controls.Add(this.dataGridView1);
 			this.Name = "Form2";
 			this.Text = "История";
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
 		#endregion
-
-		public System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.Button button1;
+		public System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn PIn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn NumberIn;
+		private System.Windows.Forms.DataGridViewTextBoxColumn POut;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Result;
 	}
 }

@@ -75,7 +75,7 @@
 			// 
 			// trackBar2
 			// 
-			this.trackBar2.Location = new System.Drawing.Point(16, 184);
+			this.trackBar2.Location = new System.Drawing.Point(14, 192);
 			this.trackBar2.Maximum = 16;
 			this.trackBar2.Minimum = 2;
 			this.trackBar2.Name = "trackBar2";
@@ -109,6 +109,7 @@
             0,
             0});
 			this.numericUpDown1.Name = "numericUpDown1";
+			this.numericUpDown1.ReadOnly = true;
 			this.numericUpDown1.Size = new System.Drawing.Size(60, 20);
 			this.numericUpDown1.TabIndex = 5;
 			this.numericUpDown1.Value = new decimal(new int[] {
@@ -143,6 +144,7 @@
             0,
             0});
 			this.numericUpDown2.Name = "numericUpDown2";
+			this.numericUpDown2.ReadOnly = true;
 			this.numericUpDown2.Size = new System.Drawing.Size(60, 20);
 			this.numericUpDown2.TabIndex = 7;
 			this.numericUpDown2.Value = new decimal(new int[] {

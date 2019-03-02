@@ -25,8 +25,8 @@ namespace Converter {
 
 		public Editor ed = new Editor();
 
-		public string DoCmnd(int j) {
-			if (j == 19) {
+		public string DoCmnd(Editor.Commands j) {
+			if (j == Editor.Commands.EXECUTE) {
 				double r = Conver_p_10.dval(ed.Number, Pin);
 				string res = Conver_10_p.Do(r, Pout, acc());
 				St = State.Converted;
@@ -39,7 +39,7 @@ namespace Converter {
 		}
 
 		private int acc() {
-			return (int)Math.Round(ed.Acc() * Math.Log(Pin) / Math.Log(Pout) + 0.5);
+			return (int)Math.Round(ed.Acc() * Math.Log(Pin) / Math.Log(Pout) + 0.5); ;
 		}
 	}
 }

@@ -12,7 +12,7 @@ namespace Converter {
 			if (c < 0 || c > 10)
 				throw new IndexOutOfRangeException();
 
-			int LeftSide = (int)n;
+			long LeftSide = (long)n;
 
 			double RightSide = 0f;
 			RightSide = n - LeftSide;
@@ -33,9 +33,11 @@ namespace Converter {
 			return SymbolArray.ElementAt(d);
 		}
 
-		public static string int_to_P(int n, int p) {
+		public static string int_to_P(long n, long p) {
 			if (p < 2 || p > 16)
 				throw new IndexOutOfRangeException();
+			if (n == 0)
+				return "0";
 			bool HaveMinus = false;
 			if (n < 0) {
 				HaveMinus = true;
@@ -44,7 +46,7 @@ namespace Converter {
 			string PNumber = string.Empty;
 
 			while (n > 0) {
-				PNumber += int_to_Char(n % p);
+				PNumber += int_to_Char((int)(n % p));
 				n /= p;
 			}
 

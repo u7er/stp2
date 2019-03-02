@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Converter {
 	public partial class Form1 : Form {
 		Control_ ctl = new Control_();
+		public static readonly int[] MaximumNumberLenghtForP = { 17, 17, 17, 17, 17, 15, 14, 13, 13, 12, 12, 11, 11, 11, 10 };
+
 		public Form1() {
 			InitializeComponent();
 		}
@@ -18,12 +21,12 @@ namespace Converter {
 			UpdateButtons();
 		}
 
-		private void DoCmnd(int j) {
-			if (j == 19) {
+		private void DoCmnd(Editor.Commands j) {
+			if (j == Editor.Commands.EXECUTE) {
 				label2.Text = ctl.DoCmnd(j);
 			} else {
 				if (ctl.St == Control_.State.Converted) {
-					label1.Text = ctl.DoCmnd(18);
+					label1.Text = ctl.DoCmnd(Editor.Commands.CLEAR);
 				}
 				label1.Text = ctl.DoCmnd(j);
 				label2.Text = "0";
@@ -58,12 +61,14 @@ namespace Converter {
 			trackBar1.Value;
 			ctl.Pin = trackBar1.Value;
 			UpdateButtons();
-			label1.Text = ctl.DoCmnd(18);
+			label1.Text = ctl.DoCmnd(Editor.Commands.CLEAR);
 			label2.Text = "0";
 		}
 
 		private void trackBar2_Scroll(object sender, EventArgs e) {
+			numericUpDown2.ValueChanged -= numericUpDown2_ValueChanged;
 			numericUpDown2.Value = trackBar2.Value;
+			numericUpDown2.ValueChanged += numericUpDown2_ValueChanged;
 			UpdateP2();
 		}
 
@@ -74,9 +79,8 @@ namespace Converter {
 
 		private void UpdateP2() {
 			ctl.Pout = trackBar2.Value;
-			label2.Text = ctl.DoCmnd(19);
-			label4.Text = "Основание с. сч. результата " +
-			trackBar2.Value;
+			label2.Text = ctl.DoCmnd(Editor.Commands.EXECUTE);
+			label4.Text = "Основание с. сч. результата " + trackBar2.Value;
 		}
 
 		private void выходToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -87,11 +91,12 @@ namespace Converter {
 			Form2 history = new Form2();
 			history.Show();
 			if (ctl.his.Count() == 0) {
-				history.textBox1.AppendText("История пуста");
+				MessageBox.Show("Внимание", "История пуста", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 				return;
 			}
 			for (int i = 0; i < ctl.his.Count(); i++) {
-				history.textBox1.AppendText(ctl.his[i].ToString() + Environment.NewLine);
+				List<string> currentRecord = ctl.his[i].ToList();
+				history.dataGridView1.Rows.Add(currentRecord[0], currentRecord[1], currentRecord[2], currentRecord[3]);
 			}
 		}
 
@@ -102,10 +107,10 @@ namespace Converter {
 
 		private void Form1_KeyPress(object sender, KeyPressEventArgs e) {
 			int i = -1;
-			if (label1.Text.Length > 30)
+			if (label1.Text.Length > MaximumNumberLenghtForP[ctl.Pin - 2])
 				return;
 			if (e.KeyChar >= 'A' && e.KeyChar <= 'F')
-				i =	e.KeyChar - 'A' + 10;
+				i = e.KeyChar - 'A' + 10;
 			if (e.KeyChar >= 'a' && e.KeyChar <= 'f')
 				i =	e.KeyChar - 'a' + 10;
 			if (e.KeyChar >= '0' && e.KeyChar <= '9')
@@ -116,25 +121,29 @@ namespace Converter {
 				i = 17;
 			if (e.KeyChar == 13)
 				i = 19;
-			if ((i < ctl.Pin) || (i >= 16))
-				DoCmnd(i);
+			if (i <= 15 && i >= 0)
+				if (i >= ctl.Pin)
+					return;
+			if (i == -1)
+				return;
+			DoCmnd((Editor.Commands)Enum.GetValues(typeof(Editor.Commands)).GetValue(i));
 		}
 
 		private void Form1_KeyDown(object sender, KeyEventArgs e) {
 			if (e.KeyCode == Keys.Delete)
-				DoCmnd(18);
+				DoCmnd(Editor.Commands.BS);
 			if (e.KeyCode == Keys.Execute)
-				DoCmnd(19);
+				DoCmnd(Editor.Commands.EXECUTE);
 			if (e.KeyCode == Keys.Decimal)
-				DoCmnd(16);
+				DoCmnd(Editor.Commands.ADDDOT);
 		}
 
 		private void button_Click(object sender, EventArgs e) {
 			Button but = (Button)sender;
 			int j = Convert.ToInt16(but.Tag.ToString());
-			if ((j >= 0 && j <= 15) && label1.Text.Length > 30)
+			if ((j >= 0 && j <= 15) && label1.Text.Length > MaximumNumberLenghtForP[ctl.Pin - 2])
 				return;
-			DoCmnd(j);
+			DoCmnd((Editor.Commands)Enum.GetValues(typeof(Editor.Commands)).GetValue(j));
 		}
 	}
 }

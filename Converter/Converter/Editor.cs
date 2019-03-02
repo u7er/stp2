@@ -2,6 +2,9 @@
 
 namespace Converter {
 	public class Editor {
+		public enum Commands {
+			ADD0, ADD1, ADD2, ADD3, ADD4, ADD5, ADD6, ADD7, ADD8, ADD9, ADDA, ADDB, ADDC, ADDD, ADDE, ADDF, ADDDOT, BS, CLEAR, EXECUTE
+		};
 		string number = zero;
 		const string delim = ".";
 		const string zero = "0";
@@ -47,63 +50,63 @@ namespace Converter {
 			return Number;
 		}
 
-		public string DoEdit(int j) {
+		public string DoEdit(Commands j) {
 			switch (j) {
-				case 0:
+				case Commands.ADD0:
 				AddZero();
 				break;
-				case 1:
+				case Commands.ADD1:
 				AddDigit(1);
 				break;
-				case 2:
+				case Commands.ADD2:
 				AddDigit(2);
 				break;
-				case 3:
+				case Commands.ADD3:
 				AddDigit(3);
 				break;
-				case 4:
+				case Commands.ADD4:
 				AddDigit(4);
 				break;
-				case 5:
+				case Commands.ADD5:
 				AddDigit(5);
 				break;
-				case 6:
+				case Commands.ADD6:
 				AddDigit(6);
 				break;
-				case 7:
+				case Commands.ADD7:
 				AddDigit(7);
 				break;
-				case 8:
+				case Commands.ADD8:
 				AddDigit(8);
 				break;
-				case 9:
+				case Commands.ADD9:
 				AddDigit(9);
 				break;
-				case 10:
+				case Commands.ADDA:
 				AddDigit(10);
 				break;
-				case 11:
+				case Commands.ADDB:
 				AddDigit(11);
 				break;
-				case 12:
+				case Commands.ADDC:
 				AddDigit(12);
 				break;
-				case 13:
+				case Commands.ADDD:
 				AddDigit(13);
 				break;
-				case 14:
+				case Commands.ADDE:
 				AddDigit(14);
 				break;
-				case 15:
+				case Commands.ADDF:
 				AddDigit(15);
 				break;
-				case 16:
+				case Commands.ADDDOT:
 				AddDelim();
 				break;
-				case 17:
+				case Commands.BS:
 				Bs();
 				break;
-				case 18:
+				case Commands.CLEAR:
 				Clear();
 				break;
 				default:

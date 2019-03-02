@@ -14,8 +14,8 @@ namespace Converter {
 				number1 = n1;
 				number2 = n2;
 			}
-			public override string ToString() {
-				return number1 + " в основании " + p1 + " ---> " + number2 + " в основании " + p2;
+			public List<string> ToList() {
+				return new List<string> { p1.ToString(), number1, p2.ToString(), number2 };
 			}
 		}
 
@@ -34,10 +34,7 @@ namespace Converter {
 			set {
 				if (i < 0 || i >= L.Count)
 					throw new IndexOutOfRangeException();
-				if (value is Record)
-					L[i] = value;
-				else
-					throw new NotSupportedException();
+				L[i] = value;
 			}
 		}
 
